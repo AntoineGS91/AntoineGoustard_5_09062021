@@ -1,0 +1,268 @@
+body {
+  margin: 0 15% 0 15%;
+}
+
+p {
+  font-family: "Kufam", sans-serif;
+}
+
+h1, h2, h3 {
+  font-family: "Lalezar", cursive;
+}
+
+header #cartTag {
+  font-weight: bold;
+  position: relative;
+  bottom: 10px;
+  height: 25px;
+  color: red;
+}
+header .navbar {
+  padding: 20px 10px 20px 0px;
+  background-color: #f3e9f1;
+  transition: all ease 0.4s;
+  border-radius: 0 0 15px 15px;
+}
+header .navbar-brand {
+  font-size: 22px;
+  color: black !important;
+}
+header .navbar .navbar-nav li a {
+  font-size: 16px;
+}
+header .navbar .nav-item {
+  position: relative;
+}
+header .navbar .nav-item i {
+  font-size: 1.5em;
+}
+header .navbar .nav-item .fa-home {
+  position: absolute;
+  top: 10px;
+  right: 100px;
+}
+header .navbar .nav-item .fa-shopping-cart {
+  position: absolute;
+  top: 10px;
+  right: 95px;
+}
+header .navbar .nav-item p {
+  margin-left: 40px;
+  font-size: 1.5em;
+}
+
+#presentation {
+  background-image: url(/back-end/images/vcam_5.jpg);
+  z-index: 2;
+  margin-top: -250px;
+  height: 700px;
+  background-size: cover;
+  margin-left: 15%;
+  width: 70%;
+}
+#presentation button {
+  margin-top: 650px;
+  width: 24%;
+}
+
+#main div {
+  background-color: #f3e9f1;
+}
+
+#productsList {
+  padding: 0;
+}
+#productsList > li {
+  width: 33%;
+  background-color: #f3e9f1;
+  opacity: 0.5;
+}
+#productsList > li p {
+  padding-left: 10px;
+}
+#productsList > li:hover {
+  opacity: 1;
+  animation: blur 0.75s ease 0s 1;
+  -webkit-animation: blur 0.75s ease 0s 1;
+  -moz-animation: blur 0.75s ease 0s 1;
+}
+
+.price {
+  text-align: center;
+  width: 100%;
+  margin-top: 25px;
+  font-weight: bold;
+}
+
+button {
+  width: 33%;
+}
+
+#productsList > li:nth-child(1), #productsList > li:nth-child(2), #productsList > li:nth-child(4) {
+  margin-right: 0.5%;
+}
+
+.img-product {
+  max-width: 50%;
+  margin-top: 10px;
+}
+
+footer {
+  border-radius: 15px 15px 0 0;
+  background-color: #f3e9f1;
+  height: 140px;
+}
+footer i {
+  font-size: 2.5em;
+  margin-right: 10px;
+  margin-left: 10px;
+}
+footer a {
+  text-decoration: none;
+  color: black;
+}
+footer a:hover {
+  color: grey;
+}
+
+.loader {
+  z-index: 1;
+  margin: 0;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  display: flex;
+  color: black;
+  font-size: 150px;
+  position: fixed;
+  background-color: white;
+  -webkit-animation: back 1.5s;
+          animation: back 1.5s;
+  -webkit-animation-fill-mode: forwards;
+          animation-fill-mode: forwards;
+}
+.loader p {
+  position: absolute;
+  top: 65%;
+  left: 35%;
+  font-size: 0.25em;
+}
+.loader i {
+  margin: auto;
+  -webkit-animation: i-spin 2s linear infinite;
+          animation: i-spin 2s linear infinite;
+  -webkit-animation-fill-mode: forwards;
+          animation-fill-mode: forwards;
+}
+
+@media screen and (max-width: 769px) {
+  body {
+    margin: 0;
+  }
+  body .loader p {
+    left: 5%;
+  }
+  body #presentation {
+    background-position: right 50% bottom 0%;
+  }
+  body #productsList > li {
+    width: 100%;
+    filter: none;
+  }
+  body #productsList > li:hover {
+    filter: none;
+  }
+  body #productsList > li:nth-child(1), body #productsList > li:nth-child(3), body #productsList > li:nth-child(5) {
+    margin-right: 0;
+  }
+  body #productImage {
+    max-width: 100%;
+  }
+}
+@-webkit-keyframes back {
+  0% {
+    top: 0;
+    opacity: 1;
+  }
+  50% {
+    top: 0;
+    opacity: 1;
+  }
+  99% {
+    top: 0;
+    opacity: 0;
+  }
+  100% {
+    top: 100%;
+    opacity: 0;
+  }
+}
+@keyframes back {
+  0% {
+    top: 0;
+    opacity: 1;
+  }
+  50% {
+    top: 0;
+    opacity: 1;
+  }
+  99% {
+    top: 0;
+    opacity: 0;
+  }
+  100% {
+    top: 100%;
+    opacity: 0;
+  }
+}
+@-webkit-keyframes i-spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  50% {
+    transform: rotate(180deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+@keyframes i-spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  50% {
+    transform: rotate(180deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+@-webkit-keyframes blur {
+  0% {
+    -webkit-filter: blur(3px);
+    -moz-filter: blur(3px);
+    -o-filter: blur(3px);
+    -ms-filter: blur(3px);
+  }
+  100% {
+    -webkit-filter: blur(0px);
+    -moz-filter: blur(0px);
+    -o-filter: blur(0px);
+    -ms-filter: blur(0px);
+  }
+}
+@keyframes blur {
+  0% {
+    -webkit-filter: blur(3px);
+    -moz-filter: blur(3px);
+    -o-filter: blur(3px);
+    -ms-filter: blur(3px);
+  }
+  100% {
+    -webkit-filter: blur(0px);
+    -moz-filter: blur(0px);
+    -o-filter: blur(0px);
+    -ms-filter: blur(0px);
+  }
+}/*# sourceMappingURL=main.css.map */
