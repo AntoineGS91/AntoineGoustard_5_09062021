@@ -1,8 +1,9 @@
 // Variables
 const idForm = document.querySelector('#lenseChoice')
 const btn_sendCart = document.querySelector('#addToCart')
+const cartInProgress = []
 
-// Gestion de la page en fonction de l'id du produit
+// Gestion de l'api de la page
 function getProducts(productId) {
   return fetch(`http://localhost:3000/api/cameras/${productId}`)
     .then((res) => res.json())
@@ -31,29 +32,29 @@ function buildProducts(product) {
     optionLenses.textContent = product.lenses[i];
   }
 
-  // Panier
-  function modifyCartNumber() {
-    if (localStorage.getItem('panier') === null) { //si la clé 'panier' n'est pas trouvée dans le localStorage
-      document.querySelector('#cartTag').textContent = 1; //ajouter 1 à l'icone panier
-    }else {
-      document.querySelector('#cartTag').textContent++ ; //ajouter 1 à l'icone panier
-    }
+  // Gestion du panier
+  function addToCart() {
+    cartInProgress.push(product._id)
+    localStorage.setItem('panier', JSON.stringify(cartInProgress))
   }
-
-  // Gestion du produit en LocalStorage
   
-
-
+  // Incrémentation icone panier
+  function modifyCartNumber() {
+      if (document.querySelector('#cartTag').textContent === null) {
+        document.querySelector('#cartTag').textContent = 0
+      } else {
+        document.querySelector('#cartTag').textContent = cartInProgress.length
+  }}
 
   // Event boutton panier
     btn_sendCart.addEventListener('click', (e) => {
       e.preventDefault()
-      modifyCartNumber()
       alert('Le produit a bien été ajouté au panier')
-    })
+      addToCart()
+      modifyCartNumber()
+    }
+  )
 }
 
 // Fonction main
 (async () => {buildProducts(await getProducts(redirectionUrl()))})()
-
-

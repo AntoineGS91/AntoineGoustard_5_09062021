@@ -22,11 +22,35 @@
     article.querySelector('#productPrice').textContent = `${product.price / 100} €`
     article.querySelector('#productDescription').textContent = product.description
     article.querySelector('#productLink').href = `/front-end/products.html?id=${product._id}`
+    article.querySelector("[data-role='productLink']").setAttribute('data-value', product._id)
     document.querySelector('#productsList').appendChild(article)
   }
 
-// // Duplication du template
-  const buildProductsList = (products) => {products.forEach(product => displayProduct(product))}
+// Duplication du template
+  const buildProductsList = (products) => {
+    products.forEach(product => displayProduct(product))
+  }
+
+// Génération du choosen product
+  const clickListener = (target) => {
+    for (let node of document.querySelectorAll("[data-role='productLink']")){
+      node.addEventListener('click', (event) =>{
+        event.preventDefault()
+        const productCart = new Array()
+        const choosenProduct = event.target
+        const productId = choosenProduct.getAttribute('data-value')
+        const cartInProgress = localStorage.getItem('panier')
+        productCart.push(productId)
+        localStorage.setItem('panier', cartInProgress)
+        localStorage.setItem('choosenProduct', productId)
+        window.location.href = choosenProduct.getAttribute('href')
+      })
+    }
+  }
 
 // Fonction main
-  (async () => buildProductsList(await getProducts()))()
+  (async () => {
+    buildProductsList(await getProducts())
+    await clickListener()
+  }
+  )()

@@ -75,16 +75,9 @@ header .navbar .nav-item p {
 #productsList > li {
   width: 33%;
   background-color: #f3e9f1;
-  opacity: 0.5;
 }
 #productsList > li p {
   padding-left: 10px;
-}
-#productsList > li:hover {
-  opacity: 1;
-  animation: blur 0.75s ease 0s 1;
-  -webkit-animation: blur 0.75s ease 0s 1;
-  -moz-animation: blur 0.75s ease 0s 1;
 }
 
 .price {
@@ -145,7 +138,7 @@ footer a:hover {
 .loader p {
   position: absolute;
   top: 65%;
-  left: 35%;
+  left: 30%;
   font-size: 0.25em;
 }
 .loader i {
