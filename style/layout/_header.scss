@@ -1,0 +1,44 @@
+header {
+    #cartTag{
+        font-weight: bold;
+        position: relative;
+        bottom: 10px;
+        height: 25px;
+        color: red;
+    }
+    .navbar{
+        padding: 20px 10px 20px 0px;
+        background-color: #f3e9f1;
+        transition: all ease 0.4s;
+        border-radius: 0 0 15px 15px;
+        &-brand{
+            font-size: 22px;
+            color: black !important;
+        }
+        .navbar-nav li a{
+        font-size: 16px;    
+    }
+    .nav-item{
+          position: relative;
+        i{
+            font-size: 1.5em;
+            
+        }
+        .fa-home{
+            position: absolute;
+            top: 10px;
+            right: 100px;
+            
+        }
+        .fa-shopping-cart{
+            position: absolute;
+            top: 10px;
+            right: 95px;
+        }
+        p{
+            margin-left: 40px;
+            font-size: 1.5em;
+      }
+    }
+    }
+}

@@ -1,0 +1,26 @@
+@media screen and (max-width: 769px) {
+    body{
+        margin: 0;
+        .loader{
+            p{
+                left: 5%;
+            }
+        }
+        #presentation{
+            background-position: right 50% bottom 0%;
+        }
+        #productsList > li{
+            width: 100%;
+            filter: none;
+            &:hover{
+                filter: none;
+            }
+        }
+        #productsList > li:nth-child(1), #productsList > li:nth-child(3), #productsList > li:nth-child(5){
+            margin-right: 0;
+        }
+        #productImage{
+            max-width: 100%;
+        }
+    }
+}   
