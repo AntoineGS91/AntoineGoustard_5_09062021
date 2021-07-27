@@ -104,6 +104,28 @@ body > section > div > div:nth-child(3) > a {
   margin-left: 38%;
 }
 
+#product #productName {
+  width: 30%;
+  margin-bottom: auto !important;
+  margin-top: auto;
+}
+#product #productQuantity {
+  margin-bottom: auto;
+  margin-top: auto;
+  width: 10%;
+  text-align: center;
+}
+#product #productLense {
+  width: 20%;
+  margin-bottom: auto;
+  margin-top: auto;
+}
+#product #productPrice {
+  margin-bottom: auto;
+  margin-top: auto;
+  width: 20%;
+}
+
 footer {
   border-radius: 15px 15px 0 0;
   background-color: #f3e9f1;

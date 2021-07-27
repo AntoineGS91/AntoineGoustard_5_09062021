@@ -1,5 +1,6 @@
+const cartInProgress = JSON.parse(localStorage.getItem('panier'))
+
 function checkCart() {
-    const cartInProgress = JSON.parse(localStorage.getItem('panier'))
     if (cartInProgress === null){
         document.querySelector('#cartTag').textContent = 0
     } else {
