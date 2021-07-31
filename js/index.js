@@ -21,7 +21,7 @@
     article.querySelector('#productName').textContent = product.name
     article.querySelector('#productPrice').textContent = `${product.price / 100} €`
     article.querySelector('#productDescription').textContent = product.description
-    article.querySelector('#productLink').href = `html/products.html?id=${product._id}`
+    article.querySelector('#productLink').href = `/html/products.html?id=${product._id}`
     article.querySelector("[data-role='productLink']").setAttribute('data-value', product._id)
     document.querySelector('#productsList').appendChild(article)
   }
@@ -39,9 +39,7 @@
         const productCart = new Array()
         const choosenProduct = event.target
         const productId = choosenProduct.getAttribute('data-value')
-        const cartInProgress = localStorage.getItem('panier')
         productCart.push(productId)
-        localStorage.setItem('panier', cartInProgress)
         localStorage.setItem('choosenProduct', productId)
         window.location.href = choosenProduct.getAttribute('href')
       })

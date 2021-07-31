@@ -41,41 +41,38 @@ function buildProducts(product) {
       e.preventDefault()
       let lenseChoice = idForm.value;
       alert('Le produit a bien été ajouté au panier')
-      let cartInProgress = []
-  
-  
-  // Création objet pour le panier/localStorage
-      let cartObject = {
-        productName: product.name,
-        product_id: product._id,
-        productPrice: product.price,
-        productImg: product.imageUrl,
-        productLense : lenseChoice,
-        productQuantity: 1
-      }
+      
+
+      // Création objet pour le panier/localStorage
+        let cartObject = {
+          productName: product.name,
+          product_id: product._id,
+          productLense : lenseChoice,
+          productPrice: product.price,
+          productQuantity: 1,
+          productImg: product.imageUrl
+        }
 
 
-    // Gestion du panier
-      function addToCart() {
-        if (cartInProgress<0) {
-          cartInProgress.push(cartObject)
-          localStorage.setItem('panier', JSON.stringify(cartInProgress))
-        } else { 
-          if (cartInProgress.includes(cartObject)) {
-            cartObject.productQuantity = cartObject.productQuantity + 1
-          } else {
-            // cartInProgress = JSON.parse(localStorage.getItem('panier'))
+      // Gestion de l'ajout au panier
+      let cartInProgress = JSON.parse(localStorage.getItem('panier'))
+          if (cartInProgress === null) {
+            cartInProgress = []
             cartInProgress.push(cartObject)
             localStorage.setItem('panier', JSON.stringify(cartInProgress))
+          } else {
+              if (cartInProgress.includes(product._id, lenseChoice)) {
+                cartObject.productQuantity += productQuantity
+
+              } else{
+              cartInProgress.push(cartObject)
+              localStorage.setItem('panier', JSON.stringify(cartInProgress))
+              }
           }
-        }
-      }
-   
-        addToCart()
-        checkCart()
-      }
-    )
+      document.location.reload()
+    })
 }
+
 
 // Fonction main
 (async () => {

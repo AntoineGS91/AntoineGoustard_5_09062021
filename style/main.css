@@ -76,6 +76,9 @@ header .navbar .nav-item p {
   width: 33%;
   background-color: #f3e9f1;
 }
+#productsList > li img {
+  height: 45%;
+}
 #productsList > li p {
   padding-left: 10px;
 }
@@ -104,6 +107,9 @@ body > section > div > div:nth-child(3) > a {
   margin-left: 38%;
 }
 
+#product {
+  background-color: #f3e9f1;
+}
 #product #productName {
   width: 30%;
   margin-bottom: auto !important;
@@ -124,6 +130,38 @@ body > section > div > div:nth-child(3) > a {
   margin-bottom: auto;
   margin-top: auto;
   width: 20%;
+}
+
+body > section:nth-child(2) > div:nth-child(2) {
+  margin-right: 75px;
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+
+#emptierBtn {
+  background-color: #f3e9f1;
+  width: 20%;
+  margin-right: 0;
+  margin-left: auto;
+  justify-content: center;
+}
+
+form label {
+  text-align: center;
+  font-weight: bold;
+  background-color: #b0b0b0;
+}
+form input {
+  border: none;
+  text-align: center;
+}
+form textarea {
+  border: none;
+  text-align: center;
+}
+
+#btn_Form {
+  text-align: center;
 }
 
 footer {

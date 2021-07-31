@@ -1,4 +1,4 @@
-const cartInProgress = JSON.parse(localStorage.getItem('panier'))
+let cartInProgress = JSON.parse(localStorage.getItem('panier'))
 
 function checkCart() {
     if (cartInProgress === null){
