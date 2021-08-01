@@ -1,19 +1,30 @@
 const btnFormSubmit = document.querySelector('#btn_Form')
-const regexNomPrenomVille = /([A-Za-z_\s\-']+)/;
-const regexAdresse = /([A-Za-z0-9_\s\-'\u00C0-\u024F]+)/;
-const regexEmail = /^([\w\-\.]+)@((?:[\w]+\.)+)([a-zA-Z]{2,4})/;  
+const regexNomPrenomVille = /^[a-zA-Z\sàâæçéèêëîïôœùûüÿÀÂÆÇnÉÈÊËÎÏÔŒÙÛÜŸ-]{3,20}$/;
+const regexAdresse = /^[a-zA-Z0-9\sàâæçéèêëîïôœùûüÿÀÂÆÇnÉÈÊËÎÏÔŒÙÛÜŸ-]{3,40}$/;
+const regexEmail = /^([a-zA-Z0-9._%-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4})*$/;
+
+formInfo = localStorage.getItem("formInfo")
+formInfo = JSON.parse(formInfo)
+cartInProgress = localStorage.getItem("panier")
+let productCart = JSON.parse(cartInProgress)
+let productCartId = []
+for (let i = 0; i < productCart.length; i++) {
+    productCartId.push(productCart[i].product_id)
+}
+dataObject = JSON.stringify({contact : formInfo, products : productCartId})
 
 //  Controle des valeurs du formulaire
 function formValidation() {
     let formInfo = {
-    lastname: document.querySelector('#nom').value,
-    firstname: document.querySelector('#prenom').value,
+    firstName: document.querySelector('#prenom').value,
+    lastName: document.querySelector('#nom').value,
     address: document.querySelector('#adresse').value,
     city: document.querySelector('#ville').value,
     email: document.querySelector('#email').value
     }
 
     localStorage.setItem('formInfo', JSON.stringify(formInfo))
+
     if (regexNomPrenomVille.test(formInfo.firstname)){
         console.log("OK")
         if (regexNomPrenomVille.test(formInfo.lastname)){
@@ -47,25 +58,14 @@ function formValidation() {
     }
 }
 
-// Recupération des données pour envoi requete
-function orderValues() {
-    formInfo = localStorage.getItem("formInfo")
-    dataObject = JSON.stringify({cartInProgress, formInfo})
-    orderRequest(dataObject)
-}
-
 // Requete pour envoi des données vers l'API
-function orderRequest(dataObject){
-    console.log(dataObject)
+function orderRequest(){
     fetch('http://localhost:3000/api/cameras/order', {
         method: 'post',
         headers: { "Content-Type": "application/json" },
         body: dataObject
     }) 
-    .then(response => {
-        response = response.json()
-        console.log(response)
-    })
+    .then(response => response.json())
     .then(order => {
       localStorage.setItem("orderId", order.orderId);
       window.location.href = "/html/confirm.html";
@@ -73,11 +73,13 @@ function orderRequest(dataObject){
     .catch(error => alert("Un problème est survenu"));
 }
 
+
+
 // Evenement au clic, déclenche les différentes fonctions
 btnFormSubmit.addEventListener('click', (e) => {
     e.preventDefault() 
     if (formValidation()){
-        orderValues()
+        orderRequest()
     } else {
         console.log('Un problème est survenu')
     }

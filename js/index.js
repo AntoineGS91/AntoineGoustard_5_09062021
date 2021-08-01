@@ -31,24 +31,8 @@
     products.forEach(product => displayProduct(product))
   }
 
-// Génération du choosen product
-  const clickListener = (target) => {
-    for (let node of document.querySelectorAll("[data-role='productLink']")){
-      node.addEventListener('click', (event) =>{
-        event.preventDefault()
-        const productCart = new Array()
-        const choosenProduct = event.target
-        const productId = choosenProduct.getAttribute('data-value')
-        productCart.push(productId)
-        localStorage.setItem('choosenProduct', productId)
-        window.location.href = choosenProduct.getAttribute('href')
-      })
-    }
-  }
-
 // Fonction main
   (async () => {
     buildProductsList(await getProducts())
-    await clickListener()
     await checkCart()
   })()

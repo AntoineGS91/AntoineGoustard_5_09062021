@@ -15,8 +15,8 @@
         <header class="sticky-top">
             <nav class="navbar navbar-light navbar-expand-md">
                 <div class="container d-">
-                    <div class="navbar-brand" width="30px" height="30px">
-                        <a href="/index.html"><img src="/images/logo_orinoco.png"></a>
+                    <div class="navbar-brand">
+                        <a href="/index.html"><img src="/images/logo_orinoco.png" alt="Logo de la boutique Orinoco"></a>
                     </div>
                     <div class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#menu">
                         <span class="navbar-toggler-icon"></span>
@@ -27,7 +27,7 @@
                                 <a href="/index.html" class="nav-link">
                                     <div class="d-flex justify-content-end">
                                         <i class="fas fa-home"></i>
-                                        <p class=>Acceuil</p>
+                                        <p>Acceuil</p>
                                     </div>
                                 </a>
                             </li>
@@ -49,7 +49,7 @@
         <!-- Affichage Product -->
 
         <section class="d-md-flex">
-            <img id="productImage" class="img-product rounded" src="" alt="">
+            <img id="productImage" class="img-product rounded" src alt="Photo du produit">
             <div class="mt-5">
                 <div>
                     <h1 id="productName" class="text-center mt-2 mb-3"></h1>
@@ -58,12 +58,21 @@
                         <label class="mb-5 w-100">Veuillez choisir une lentille :
                             <select id="lenseChoice"></select>
                         </label>
+                        <label class="mb-5 w-100">Veuillez choisir une quantité :
+                            <select name="quantity" id="quantity">
+                                <option>1</option>
+                                <option>2</option>
+                                <option>3</option>
+                                <option>4</option>
+                                <option>5</option>
+                            </select>
+                        </label>
                     </div>
                     <p class="text-center fs-3 fw-bold" id="productPrice"></p>
                 </div>
                 <div class="text-center mt-3">
                     <span data-id="productId" data-value=""></span>
-                    <a href="" id="addToCart" type="submit" class="btn btn-primary w-50">Ajouter au panier</a>
+                    <a href="" id="addToCart" class="btn btn-primary w-50">Ajouter au panier</a>
                 </div>
                 <div>
                     <a href="/index.html" class="btn btn-danger w-25 mt-3">Retour</a>

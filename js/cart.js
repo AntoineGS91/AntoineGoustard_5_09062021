@@ -18,13 +18,13 @@ if (cartInProgress === null){
           <h2 id="productName" class="mb-4 text-center">${cartInProgress[i].productName}</h2>
           <div id="productLense">${cartInProgress[i].productLense}</div>
           <div id="productQuantity">${cartInProgress[i].productQuantity}</div>
-          <div class="price" id="productPrice">${cartInProgress[i].productPrice / 100} €</div>
+          <div class="price" id="productPrice">${(cartInProgress[i].productPrice * cartInProgress[i].productQuantity)/ 100} €</div>
         </div>`
     }
 
     let cartTotalPrice = []
     for (i = 0; i < cartInProgress.length; i++){
-      let priceCartInProgress = cartInProgress[i].productPrice
+      let priceCartInProgress = cartInProgress[i].productPrice * cartInProgress[i].productQuantity
       cartTotalPrice.push(priceCartInProgress)
     }
     const reducer = (accumulator, currentValue) => accumulator + currentValue

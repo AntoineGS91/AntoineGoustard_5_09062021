@@ -1,6 +1,7 @@
 // Variables
 const idForm = document.querySelector('#lenseChoice')
 const btn_sendCart = document.querySelector('#addToCart')
+const quantitySelected = document.querySelector('#quantity')
 
 
 // Gestion de l'api de la page
@@ -40,6 +41,8 @@ function buildProducts(product) {
     btn_sendCart.addEventListener('click', (e) => {
       e.preventDefault()
       let lenseChoice = idForm.value;
+      let productQuantity = quantitySelected.value
+      // let parseProductQuantity = parseInt(productQuantity)
       alert('Le produit a bien été ajouté au panier')
       
 
@@ -49,30 +52,29 @@ function buildProducts(product) {
           product_id: product._id,
           productLense : lenseChoice,
           productPrice: product.price,
-          productQuantity: 1,
+          productQuantity: parseInt(productQuantity),
           productImg: product.imageUrl
         }
 
+      
 
       // Gestion de l'ajout au panier
-      let cartInProgress = JSON.parse(localStorage.getItem('panier'))
+      
+          console.log(cartObject)
+          let cartInProgress = JSON.parse(localStorage.getItem('panier'))
           if (cartInProgress === null) {
             cartInProgress = []
             cartInProgress.push(cartObject)
             localStorage.setItem('panier', JSON.stringify(cartInProgress))
           } else {
-              if (cartInProgress.includes(product._id, lenseChoice)) {
-                cartObject.productQuantity += productQuantity
-
-              } else{
-              cartInProgress.push(cartObject)
-              localStorage.setItem('panier', JSON.stringify(cartInProgress))
+            cartInProgress.push(cartObject)
+            localStorage.setItem('panier', JSON.stringify(cartInProgress))
               }
-          }
-      document.location.reload()
-    })
-}
-
+            }
+          // document.location.reload()
+          )}
+      
+       
 
 // Fonction main
 (async () => {
