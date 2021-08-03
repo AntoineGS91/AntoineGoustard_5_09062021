@@ -1,7 +1,7 @@
 const btnFormSubmit = document.querySelector('#btn_Form')
 const regexNomPrenomVille = /^[a-zA-Z\sàâæçéèêëîïôœùûüÿÀÂÆÇnÉÈÊËÎÏÔŒÙÛÜŸ-]{3,20}$/;
 const regexAdresse = /^[a-zA-Z0-9\sàâæçéèêëîïôœùûüÿÀÂÆÇnÉÈÊËÎÏÔŒÙÛÜŸ-]{3,40}$/;
-const regexEmail = /^([a-zA-Z0-9._%-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4})*$/;
+const regexEmail = /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
 
 formInfo = localStorage.getItem("formInfo")
 formInfo = JSON.parse(formInfo)
@@ -72,8 +72,6 @@ function orderRequest(){
     })
     .catch(error => alert("Un problème est survenu"));
 }
-
-
 
 // Evenement au clic, déclenche les différentes fonctions
 btnFormSubmit.addEventListener('click', (e) => {

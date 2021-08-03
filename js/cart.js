@@ -1,14 +1,15 @@
 let cartProductList = document.querySelector('#cartProductList')
 
+// Affichage du contenu du panier
 if (cartInProgress === null){
-        cartProductList.innerHTML =` 
-          <div>
-              <div class="border border-primary text-center fs-2">
-                  <p>Votre panier est vide</p>
-                  <p>Merci de selectionner des produits</p>
-              </div>
-              <a class="btn btn-danger border border-primary d-flex justify-content-center" href="/index.html">Retour à l'accueil</a>
-          </div>`
+  cartProductList.innerHTML =` 
+    <div>
+        <div class="border border-primary text-center fs-2">
+            <p>Votre panier est vide</p>
+            <p>Merci de selectionner des produits</p>
+        </div>
+        <a class="btn btn-danger border border-primary d-flex justify-content-center" href="/index.html">Retour à l'accueil</a>
+    </div>`
 } else {
     let productDisplay = []
     for (i = 0; i < cartInProgress.length; i++){
@@ -22,24 +23,25 @@ if (cartInProgress === null){
         </div>`
     }
 
-    let cartTotalPrice = []
-    for (i = 0; i < cartInProgress.length; i++){
-      let priceCartInProgress = cartInProgress[i].productPrice * cartInProgress[i].productQuantity
-      cartTotalPrice.push(priceCartInProgress)
-    }
-    const reducer = (accumulator, currentValue) => accumulator + currentValue
-    let totalPrice = cartTotalPrice.reduce(reducer, 0)
+// Calcul et affichage du prix total du panier
+let cartTotalPrice = []
+for (i = 0; i < cartInProgress.length; i++){
+  let priceCartInProgress = cartInProgress[i].productPrice * cartInProgress[i].productQuantity
+  cartTotalPrice.push(priceCartInProgress)
+}
+const reducer = (accumulator, currentValue) => accumulator + currentValue
+let totalPrice = cartTotalPrice.reduce(reducer, 0)
 
-    const priceDisplay = `<div class="fw-bold">${totalPrice / 100} €</div>`
-    let cartProductPrice = document.querySelector('#totalPrice')
+const priceDisplay = `<div class="fw-bold">${totalPrice / 100} €</div>`
+let cartProductPrice = document.querySelector('#totalPrice')
 
-    cartProductPrice.innerHTML = priceDisplay
-    cartProductList.innerHTML = productDisplay
+cartProductPrice.innerHTML = priceDisplay
+cartProductList.innerHTML = productDisplay
 
-    }
+}
     
+// Bouton pour vider le panier
 const emptierCart = document.querySelector('#emptierBtn')
-
 emptierCart.addEventListener('click', (e) => {
   e.preventDefault()
   localStorage.removeItem('panier')

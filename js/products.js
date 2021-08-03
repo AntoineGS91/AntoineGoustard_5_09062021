@@ -4,7 +4,7 @@ const btn_sendCart = document.querySelector('#addToCart')
 const quantitySelected = document.querySelector('#quantity')
 
 
-// Gestion de l'api de la page
+// Récupération des données de l'API
 function getProducts(productId) {
   return fetch(`http://localhost:3000/api/cameras/${productId}`)
     .then((res) => res.json())
@@ -42,7 +42,6 @@ function buildProducts(product) {
       e.preventDefault()
       let lenseChoice = idForm.value;
       let productQuantity = quantitySelected.value
-      // let parseProductQuantity = parseInt(productQuantity)
       alert('Le produit a bien été ajouté au panier')
       
 
@@ -56,23 +55,21 @@ function buildProducts(product) {
           productImg: product.imageUrl
         }
 
-      
 
-      // Gestion de l'ajout au panier
-      
-          console.log(cartObject)
-          let cartInProgress = JSON.parse(localStorage.getItem('panier'))
-          if (cartInProgress === null) {
-            cartInProgress = []
-            cartInProgress.push(cartObject)
-            localStorage.setItem('panier', JSON.stringify(cartInProgress))
-          } else {
-            cartInProgress.push(cartObject)
-            localStorage.setItem('panier', JSON.stringify(cartInProgress))
-              }
+      // Ajout au panier
+        let cartInProgress = JSON.parse(localStorage.getItem('panier'))
+        if (cartInProgress === null) {
+          cartInProgress = []
+          cartInProgress.push(cartObject)
+          localStorage.setItem('panier', JSON.stringify(cartInProgress))
+        } else {
+          cartInProgress.push(cartObject)
+          localStorage.setItem('panier', JSON.stringify(cartInProgress))
             }
-          // document.location.reload()
-          )}
+          document.location.reload()
+    })
+}
+
       
        
 
