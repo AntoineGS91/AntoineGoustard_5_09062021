@@ -1,5 +1,4 @@
 // Variables
-let cartInProgress = JSON.parse(localStorage.getItem('panier'))
 let numberOfProducts = 0
 
 // Controle quantité du panier afin d'afficher la bonne valeur

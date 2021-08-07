@@ -5,8 +5,7 @@ const regexEmail = /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-
 
 formInfo = localStorage.getItem("formInfo")
 formInfo = JSON.parse(formInfo)
-cartInProgress = localStorage.getItem("panier")
-let productCart = JSON.parse(cartInProgress)
+let productCart = cartInProgress
 let productCartId = []
 for (let i = 0; i < productCart.length; i++) {
     productCartId.push(productCart[i].product_id)
@@ -25,36 +24,18 @@ function formValidation() {
 
     localStorage.setItem('formInfo', JSON.stringify(formInfo))
 
-    if (regexNomPrenomVille.test(formInfo.firstname)){
-        console.log("OK")
-        if (regexNomPrenomVille.test(formInfo.lastname)){
-            console.log("OK")
-            if (regexAdresse.test(formInfo.address)){
-                console.log("OK")
-                if (regexNomPrenomVille.test(formInfo.city)){
-                    console.log("OK")
-                    if (regexEmail.test(formInfo.email)){
-                        console.log("TestComplete")
-                        return true;
-                    } else {
-                        alert("Le remplissage de l'adresse email est incorrect")
-                        return false
-                    }
-                } else {
-                    alert("Le remplissage de la ville est incorrect")
-                    return false
-                }
-            } else {
-                alert("Le remplissage de l'adresse est incorrect")
-                return false
-            }
-        } else {
-            alert("Le remplissage du nom est incorrect")
-            return false
-        }
-    } else{
+    if (!regexNomPrenomVille.test(formInfo.firstname)){
         alert("Le remplissage du prénom est incorrect")
-        return false
+    } else if (!regexNomPrenomVille.test(formInfo.lastname)){
+        alert("Le remplissage du nom est incorrect")
+    } else if (!regexAdresse.test(formInfo.address)){
+        alert("Le remplissage de l'adresse est incorrect")
+    } else if (!regexNomPrenomVille.test(formInfo.city)){
+        alert("Le remplissage de la ville est incorrect")
+    } else if(!regexEmail.test(formInfo.email)){
+        alert("Le remplissage de l'adresse email est incorrect")
+    } else {
+        return true
     }
 }
 

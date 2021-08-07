@@ -63,18 +63,16 @@ function buildProducts(product) {
           cartInProgress.push(cartObject)
           localStorage.setItem('panier', JSON.stringify(cartInProgress))
         } else {
-          cartInProgress.push(cartObject)
-          localStorage.setItem('panier', JSON.stringify(cartInProgress))
+              cartInProgress.push(cartObject)
+              localStorage.setItem('panier', JSON.stringify(cartInProgress))
             }
-          document.location.reload()
+            window.location.reload()
     })
 }
-
-      
-       
 
 // Fonction main
 (async () => {
   buildProducts(await getProducts(redirectionUrl()))
   await checkCart()
 })()
+let cartInProgress = JSON.parse(localStorage.getItem('panier'))

@@ -36,3 +36,5 @@ const buildProductsList = (products) => {
   buildProductsList(await getProducts())
   await checkCart()
 })()
+
+let cartInProgress = JSON.parse(localStorage.getItem('panier'))

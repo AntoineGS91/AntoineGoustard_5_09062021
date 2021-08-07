@@ -1,4 +1,5 @@
 let cartProductList = document.querySelector('#cartProductList')
+let cartInProgress = JSON.parse(localStorage.getItem('panier'))
 
 // Affichage du contenu du panier
 if (cartInProgress === null){
@@ -20,6 +21,7 @@ if (cartInProgress === null){
           <div id="productLense">${cartInProgress[i].productLense}</div>
           <div id="productQuantity">${cartInProgress[i].productQuantity}</div>
           <div class="price" id="productPrice">${(cartInProgress[i].productPrice * cartInProgress[i].productQuantity)/ 100} €</div>
+          <btn class="btn-delete btn btn-danger text-center mt-auto mb-auto">Supprimer du panier</btn>
         </div>`
     }
 
@@ -37,15 +39,26 @@ let cartProductPrice = document.querySelector('#totalPrice')
 
 cartProductPrice.innerHTML = priceDisplay
 cartProductList.innerHTML = productDisplay
-
 }
-    
+
+// Bouton pour retirer un objet du panier
+let btnDelete = document.querySelectorAll('.btn-delete');
+for (let k = 0; k < btnDelete.length; k++){
+  btnDelete[k].addEventListener('click', (event) => {
+    event.preventDefault()
+    productToDelete = cartInProgress[k].product_id + '/' + cartInProgress[k].productLense
+    cartInProgress = cartInProgress.filter((el) => el.product_id + '/' + el.productLense !== productToDelete);
+    localStorage.setItem('panier', JSON.stringify(cartInProgress))
+    window.location.reload()
+    })
+  }
+
 // Bouton pour vider le panier
 const emptierCart = document.querySelector('#emptierBtn')
 emptierCart.addEventListener('click', (e) => {
   e.preventDefault()
   localStorage.removeItem('panier')
-  document.location.reload()
+  window.location.reload()
 })
 
 
