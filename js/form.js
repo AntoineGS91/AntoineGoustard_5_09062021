@@ -1,7 +1,7 @@
 const btnFormSubmit = document.querySelector('#btn_Form')
 const regexNomPrenomVille = /^[a-zA-Z\sàâæçéèêëîïôœùûüÿÀÂÆÇnÉÈÊËÎÏÔŒÙÛÜŸ-]{3,20}$/;
 const regexAdresse = /^[a-zA-Z0-9\sàâæçéèêëîïôœùûüÿÀÂÆÇnÉÈÊËÎÏÔŒÙÛÜŸ-]{3,40}$/;
-const regexEmail = /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+const regexEmail = /^([a-zA-Z0-9._%-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4})*$/;
 
 formInfo = localStorage.getItem("formInfo")
 formInfo = JSON.parse(formInfo)
@@ -22,22 +22,25 @@ function formValidation() {
     email: document.querySelector('#email').value
     }
 
-    localStorage.setItem('formInfo', JSON.stringify(formInfo))
-
-    if (!regexNomPrenomVille.test(formInfo.firstname)){
-        alert("Le remplissage du prénom est incorrect")
-    } else if (!regexNomPrenomVille.test(formInfo.lastname)){
-        alert("Le remplissage du nom est incorrect")
-    } else if (!regexAdresse.test(formInfo.address)){
-        alert("Le remplissage de l'adresse est incorrect")
-    } else if (!regexNomPrenomVille.test(formInfo.city)){
-        alert("Le remplissage de la ville est incorrect")
-    } else if(!regexEmail.test(formInfo.email)){
-        alert("Le remplissage de l'adresse email est incorrect")
-    } else {
-        return true
+    if(regexNomPrenomVille.test(formInfo.firstName)){
+        if(regexNomPrenomVille.test(formInfo.lastName)){
+            if(regexAdresse.test(formInfo.address)){
+                if(regexNomPrenomVille.test(formInfo.city)){
+                    if(regexEmail.test(formInfo.email) && formInfo.email != ""){
+                        return true;
+                    } else {
+                        return false;
+                    }} else {
+                    return false;
+                }} else {
+                return false;
+            }} else {
+            return false;
+        }} else {
+        return false;
     }
 }
+
 
 // Requete pour envoi des données vers l'API
 function orderRequest(){
